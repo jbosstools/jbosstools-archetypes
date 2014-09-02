@@ -1,0 +1,205 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<cheatsheet title="JBoss Forge: Scaffold a web application from scratch">
+	<intro>
+		<description>
+			This example shows you how to start off creating a new web
+			application with Java EE 6 on JBoss Enterprise Application Platform
+			6.1 or later, using JBoss Forge. The created project will use HTML5,
+			AngularJS, BootStrap 3, JAX-RS 1.1, CDI 1.0, EJB 3.1, JPA 2.0 and
+			Bean Validation 1.0. It includes a persistence unit with some
+			persistence and transaction code to help you get started with the
+			development of the application.
+		<br /><br />
+		<b>HTML5</b>
+		<br /><br />
+		HTML5 refers to both the newest version of HTML language, and the set
+		of associated technologies that allow creation of web applications and
+		sites that target various devices.
+		<br />
+		<br />
+		<b>AngularJS</b>
+		<br />
+		<br />
+		AngularJS is a client-side web framework for writing dynamic web apps.
+		It extends the HTML syntax to abstract away the DOM structure, associated CSS and behavior for components displayed on a page.
+		It allows you to bind events on the declared components to JavaScript logic through the MVC support in AngularJS.
+		<br />
+		<br />
+		<b>BootStrap 3</b>
+		<br />
+		<br />
+		BootStrap 3 is a client-side web framework for developing responsive mobile-first projects for the web.
+		It provides CSS classes to provide global styles and a grid system, and reusable components based on CSS and JavaScript that can be used for faster and easier web development.
+		<br />
+		<br />
+		<b>JAX-RS: The Java API for RESTful Web Services</b>
+		<br />
+		<br />
+		JAX-RS is a new specification in Java EE 6. It allows application
+		developers to easily expose Java services as RESTful web services.
+		<br />
+		<br />
+		<b>EJB 3.1</b>
+		<br />
+		<br />
+		EJB 3.1 is an update to the EJB specification for Java EE 6. It allows
+		application developers to build business components and services.
+		<br />
+		<br />
+		<b>JPA 2.0</b>
+		<br />
+		<br />
+		JPA 2.0 is an update to the JPA specification for Java EE 6. It
+		provides application developers with an object-relational mapping
+		facility to manage relational data.
+		<br />
+		<br />
+		<b>Bean Validation</b>
+		<br />
+		<br />
+		Bean Validation is a new specification in Java EE 6, inspired by
+		Hibernate Validator. It allows application developers to specify
+		constraints once (often in their domain model), and have them applied
+		in all layers of the application, protecting data and giving useful
+		feedback to users.
+		</description>
+	</intro>
+	<item title="Getting started with JBoss Forge">
+		<description>
+			JBoss Forge is a multi-faceted rapid application development tool that allows you to enter commands that generate classes and code.
+			You could use either a GUI within your IDE that offers a familiar wizard and dialog based UI, or a shell-like interface to perform operations.
+			It will automatically update the IDE for you.
+			A key feature is "contextual command activation".
+			For instance, opening the Forge menu on a selected project activates different commands, than launching it in isolation, or for that matter opening the Forge menu with a selected Java source file.
+			<br/><br/>
+			To open the Forge menu, execute the Forge shortcut (<b>Ctrl + 4</b> or <b>Cmd + 4</b>). This starts Forge if it is not already started.
+			Or you can optionally execute the command.
+			<br/><br/>
+		</description>
+		<command
+	        required="false"
+	        serialization="org.jboss.tools.forge.ui.command.runForgeCommand"/>
+	</item>
+	<item title="Setting up pre-requisites">
+		<description>
+			We can use JBoss Forge to add the required dependencies to the current project, that has no dependencies at the moment. Let's start by first creating a persistence unit with a couple of JPA entities.
+			<br/><br/>
+			We start by selecting the newly created project in the Project Explorer. Launch Forge through the shortcut (<b>Ctrl + 4</b> or <b>Cmd + 4</b>).
+			<br/>
+			<br/>
+			Type <b>jpa</b> in the command filter textbox located in the menu. The menu will filter out irrelevant entries, leaving you with JPA-specific commands.
+			<br/>
+			<br/>
+			Select the <b>JPA: New Entity</b> entry in the menu. Click it or hit the `Enter` key to execute the command.
+			You will be presented with a dialog where you can provide certain inputs that control how the new entity would be generated, like the package where the entity would be created, the name of the JPA entity/class, the primary-key strategy used for the entity etc.
+			<br/><br/>
+			Forge intelligently detects that JPA has not been setup in the project. It prompts for the version to use, the application server that the application would be deployed to, and the JPA provider for the persistence unit. Retain the default values and click <b>Next</b>.
+			<br/><br/>
+			You'll now be prompted to provide a few more values to create the persistence unit - the persistence unit name, the database type and the JNDI name of the datasource to use. Retain the defaults, so we use the in-memory <b>H2 database</b> of <b>JBoss EAP 6</b>. Click <b>Next</b> to be prompted for inputs about the JPA entity to be created.
+			<br/><br/>
+			The default value for the package can be retained when creating a new entity - note how Forge intelligently constructs the value for the package field from the Maven group Id and artifact Id values of the project. Specify the name of the JPA entity as <b>Customer</b> and click the <b>Finish</b> button to create a new JPA entity.
+			<br/><br/>
+			You should see a notification bubble in Eclipse when Forge completes the action. Forge would have created a JPA entity as instructed, and it would also open the Java source file in Eclipse. Note that it would have created not only a new class with the <b>@Entity</b> annotation, but also created a primary-key field named <b>id</b>, a <b>version</b> field, along with getters and setters for both, in addition to <b>equals</b>, <b>hashCode</b> and <b>toString</b> methods.
+			<br/><br/>
+		</description>
+	</item>
+	<item title="Adding a field">
+		<description>
+			Once a new persistence unit with a JPA entity has been created, we can add new JPA fields to it.
+			<br/><br/>
+			We start by selecting the newly created entity in the Project Explorer. Launch the Forge menu through the shortcut (<b>Ctrl + 4</b> or <b>Cmd + 4</b>).
+			<br/><br/>
+			Type <b>jpa</b> in the command filter textbox located in the menu and select the <b>JPA: New Field</b> entry in the menu. Click it or hit the `Enter` key to execute the command.
+			You will be presented with a dialog where you can provide certain inputs that control the creation of the new field.
+			<br/><br/>
+			We'll add a simple String field named <b>fullName</b> to the <b>Customer</b> entity. To do so, enter the value for the <b>field name</b> entry as <b>fullName</b> and click <b>Finish</b>.
+			<br/><br/>
+			Forge would have created a JPA field as instructed. Note that it would created the field along with getters and setters, in addition to updating the <b>toString</b> method.
+			<br/><br/>
+		</description>
+	</item>
+	<item title="Generating REST resources">
+		<description>
+			We shall now proceed to generate a REST resource for this JPA entity. This would expose CRUD operations via a RESTful web service that web client can use to manipulate the contents of the database.
+			<br/><br/>
+			We'll select the project in the Project Explorer and launch the Forge menu through the shortcut (<b>Ctrl + 4</b> or <b>Cmd + 4</b>).
+			<br/><br/>
+			Type <b>rest</b> in the command filter textbox located in the menu and select the <b>REST: Generate Endpoints From Entities</b> entry in the menu. Click it or hit the `Enter` key to execute the command.
+			Forge will again, intelligently detect that JAX-RS was not setup for the project.
+			We'll setup <b>JAX-RS 1.1</b> since we will be deploying against a Java EE 6 application server (JBoss EAP 6).
+			<br/><br/>
+			We'll therefore stick to the defaults. Click <b>Next</b> to setup EJB - again, Forge detects that the project lacks EJB support. We'll choose <b>EJB 3.1</b>; click <b>Next</b> to proceed to the entity selection dialog.
+			<br/><br/>
+			You'll now be presented with a dialog to select the JPA entities for which corresponding REST resources will be created.
+			Select the <b>Customer</b> entity in the list of entities. We'll use the defaults for the rest of the inputs.
+			Click <b>Finish</b> to setup JAX-RS for the project and create the JAX-RS resource class for the Customer entity. 
+		</description>
+	</item>
+	<item title="Generating a HTML5 based scaffold">
+		<description>
+			Let us now move onto generating the AngularJS based scaffold. The created scaffold can be used to interact with the database through a HTML5 front-end utilizing the previously created REST resource for the JPA entity. 
+			<br/><br/>
+			We'll select the project in the Project Explorer and launch the Forge menu through the shortcut (<b>Ctrl + 4</b> or <b>Cmd + 4</b>).
+			<br/><br/>
+			Type <b>scaffold</b> in the command filter textbox located in the menu and select the <b>Scaffold: Generate</b> entry in the menu. Click it or hit the `Enter` key to execute the command.
+			You'll be presented with a dialog where you can specify what type of a scaffold you want to generate. Select the <b>AngularJS</b> scaffold and click <b>Next</b>
+			<br/><br/>
+			You'll then be prompted to setup <b>CDI</b> for the project, since Forge detects that it has not been set up yet. Select the <b>1.0</b> version of CDI and click <b>Next</b>.
+			<br/><br/>
+			You'll finally be presented with a dialog to select the JPA entities for which the scaffold will be created.
+			Select the <b>Customer</b> entity in the list of entities. Since we have already generated REST resources, we shall leave this checkbox unchecked.
+			Click <b>Finish</b> to create the AngularJS scaffold for the project. 
+		</description>
+	</item>
+	<item skip="true" title="Run and deploy the application">
+		<description>
+			Before you proceed, ensure that you have setup and configured a JBoss
+			EAP 6 server.
+			<br />
+			<br />
+			Right-click the project and select
+			<b>Run As</b>
+			&gt;
+			<b>Run On Server</b>
+			or click on the &quot;Click to Perform&quot; link below.
+		</description>
+		<!-- the runOnServer command is not implemented yet <command required="false" 
+			serialization="org.jboss.tools.project.examples.cheatsheet.actions.runOnServer(project=${symbol_dollar}{currentProject})"/> -->
+		<action pluginId="org.jboss.tools.project.examples.cheatsheet"
+			class="org.jboss.tools.project.examples.cheatsheet.actions.RunOnServer"
+			param1="${symbol_dollar}{currentProject}" />
+	</item>
+	<item skip="true" title="Open the application in BrowserSim">
+		<description>
+			Locate the &quot;Run BrowserSim&quot; button on the toolbar and click
+			it, or click on the &quot;Click to Perform&quot; link below.
+			This launches BrowserSim where you can simulate the execution of the
+			application on a mobile browser.
+			Once you launch BrowserSim, navigate to the deployed application via the
+			BrowserSim address bar. The application is usually accessible at this
+			following link:
+			<b>http://localhost:8080/${symbol_dollar}{artifactId}/</b>
+		</description>
+		<command required="false"
+			serialization="org.jboss.tools.vpe.browsersim.eclipse.commands.runBrowserSim" />
+	</item>
+</cheatsheet>
