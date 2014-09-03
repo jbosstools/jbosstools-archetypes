@@ -97,9 +97,6 @@
 			already started. <b>Note:</b> You can optionally start Forge execute commands from the Forge console.
             <br />
             <br />
-            Changes to your projects will automatically be synchronized with your IDE's workspace.
-            <br />
-            <br />
 			Forge uses "contextual command activation", this means that opening the Forge menu while a
             project is selected will activate different commands than launching it with nothing selected; 
             similarly, opening the Forge menu while a Java source file is selected will display 
@@ -130,39 +127,39 @@
 			directory of the example), which sets up JPA to use the example
 			datasource in JBoss Enterprise Application Platform 6.
 		</description>
-		<command required="true" returns="currentProject"
-			serialization="org.jboss.tools.project.examples.cheatsheet.getProjectForCheatsheet" />
+		<command required="false"
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/resources/META-INF/persistence.xml,fromLine=1,toLine=16)" />
 	</item>
 	<item skip="true" title="Member.java">
 		<description>
-			Next, let&apos;s take a look at the pre-created Member entity:
+			Next, let's take a look at the pre-created Member entity (JPA):
 		</description>
 		<subitem
-			label="As usual with JPA, we define that the class is an entity by adding @Entity"
+			label="As required by the Java Persistence API (JPA) specification, Member.java is defined as an entity by adding the @Entity annotation to its class definition."
 			skip="true">
 			<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=32)" />
 		</subitem>
 		<subitem
-			label="The entity class has a field - name, that is configured to map to a column named full_name in the database table."
+			label="The Member entity has a field, called 'name', that is configured to map to a column named 'full_name' in the 'Member' database table."
 			skip="true">
 			<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=44, toLine=45)" />
 		</subitem>
 		<subitem
-			label="The class also has a field - phoneNumber, that is configured to map to a column named phone_number in the database table."
+			label="The Member entity also has a field, called 'phoneNumber', that is configured to map to a column named 'phone_number' in the 'Member' database table."
 			skip="true">
 			<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=50, toLine=51)" />
 		</subitem>
 		<subitem
-			label="Bean Validation allows constraints to be defined once (on the entity) and applied everywhere. Here we constrain the person's name to a certain size and regular expression. "
+			label="The Bean Validation specification allows constraints to be defined once (on fields and methods of the @Entity class) and applied everywhere, including the user interface and persistence layers (such as JavaServer Faces (JSF) or JPA). Here we constrain the person's 'name' and 'phoneNumber' to a certain size and regular expression. "
 			skip="true">
 			<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=41,toLine=43)" />
 		</subitem>
 		<subitem
-			label="@Digits, @NotNull and @Size are further examples of constraints. "
+			label="The @Digits, @NotNull and @Size annotations are further examples of constraints that may be used."
 			skip="true">
 			<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=47,toLine=49)" />
@@ -201,23 +198,37 @@
 	</item>
 	<item skip="true" title="MemberEndpoint.java">
 		<description>
-			Let&apos;s now take a look at the MemberEndpoint JAX-RS resource class, created by JBoss Forge.
-			<br /><br />
-			Firstly, it is a SLSB - a stateless session bean. It sets up a transaction context, whenever any of the methods are invoked, if a transaction is absent.
-			<br /><br />
-			It injects the JPA persistence context to access the database through the already defined JPA entity.
-			<br /><br />
-			It contains CRUD methods to create, read, update and delete the contents of the JPA entity. As indicated previously, it uses the injected persistence context to perform these operations.
-			<br /><br />
-			The methods in the class are mapped to the equivalent HTTP verbs - <b>POST</b>, <b>GET</b>, <b>PUT</b> and <b>DELETE</b>. Any HTTP client can invoke these methods to manipulate the Member entities, and thus, the contents of the database.    
+			Let's now take a look at the MemberEndpoint JAX-RS resource class, created by JBoss Forge.
 		</description>
-  		<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java)" />
+		<subitem
+			label="Firstly, the endpoint is a @Stateless Session Bean (SLSB), which starts a new transaction context (if absent) for any method invoked from the bean."
+			skip="true">
+			<command required="false"
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=20)" />
+		</subitem>
+		<subitem
+			label="The endpoint also injects the JPA PersistenceContext to access the database through the already defined JPA entity."
+			skip="true">
+			<command required="false"
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=24)" />
+		</subitem>
+		<subitem
+			label="The endpoint contains methods to CREATE, READ, UPDATE and DELETE the contents of the 'Member' JPA entity. As previously indicated, it uses the injected JPA persistence context to perform these operations."
+			skip="true">
+			<command required="false"
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
+		</subitem>
+		<subitem
+			label="The methods in the endpoint are mapped to the equivalent HTTP verbs - POST, GET, PUT and DELETE. Any HTTP client can invoke these methods to manipulate instances of the 'Member' entity, and thus, the contents of the database."
+			skip="true">
+			<command required="false"
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
+		</subitem>
 	</item>
 	<item title="Generating a HTML5 based scaffold">
 		<description>
 			Now, let's continue by generating the AngularJS based scaffold. Scaffolding can be used to interact with the database through 
-			a HTML5 front-end. This front-end uses the previously created REST resource for the JPA entity to exchange data with the server. 
+			a HTML5 front-end. This front-end will use the newly created REST resource, `MemberEndpoint.java`, to exchange data with the server. 
 			<br/><br/>
 			
 			As in previous steps, select the project in the Project Explorer and launch the Forge menu through the shortcut (<b>Ctrl + 4</b> or <b>Cmd + 4</b>).
@@ -237,7 +248,7 @@
 			leave the checkbox for generating REST resources unchecked. Click <b>Finish</b> to execute the wizard and create the AngularJS scaffold. 
 		</description>
 	</item>
-	<item skip="true" title="Examine the generated scaffold">
+	<item skip="true" title="Examine the generated scaffold (AngularJS)">
 		<description>
 			Let&apos;s now take a look at the AngularJS scaffold created by JBoss Forge.
 			<br /><br />
@@ -265,8 +276,6 @@
 			
 			Right-click the project and select <b>Run As</b> &gt; <b>Run On Server</b> or click &quot;Click to Perform&quot; (below).
 		</description>
-		<!-- the runOnServer command is not implemented yet <command required="false" 
-			serialization="org.jboss.tools.project.examples.cheatsheet.actions.runOnServer(project=${currentProject})"/> -->
 		<action pluginId="org.jboss.tools.project.examples.cheatsheet"
 			class="org.jboss.tools.project.examples.cheatsheet.actions.RunOnServer"
 			param1="${currentProject}" />
@@ -284,9 +293,14 @@
 	<item title="Continue exploring JBoss Forge">
 		<description>
 			At this point, you should now have successfully created a Java EE 6 web application using several technologies/specifications. Browse the Forge menu
-			to find more useful commands, or to learn more about JBoss Forge, find more tutorials, and explore a variety of community-supported addons, 
-			visit <a>http://forge.jboss.org</a> 
+			to find more useful commands, or to learn more about JBoss Forge, find more tutorials, and explore a variety of community-supported addons for various technologies, 
+			visit <b>http://forge.jboss.org</b> 
 			<br/><br/> 
+			To see a list of available Forge commands, select the project in the Project Explorer and launch the Forge menu through the shortcut (<b>Ctrl + 4</b> or <b>Cmd + 4</b>) -
+			you will then be able to filter and scroll through the available options without ever leaving the IDE.
+			<br/><br/>
 		</description>
+		<command required="false" 
+		    serialization="org.eclipse.ui.browser.openBrowser(url=http://forge.jboss.org)"/>
 	</item>
 </cheatsheet>
