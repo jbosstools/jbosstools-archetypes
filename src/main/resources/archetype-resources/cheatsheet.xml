@@ -21,7 +21,7 @@
 			This example shows you how to create a new web
 			application with Java EE 6 for JBoss Enterprise Application Platform
 			6.1 or later, using JBoss Forge. The created project will use HTML5,
-			AngularJS, BootStrap 3, JAX-RS 1.1, CDI 1.0, EJB 3.1, JPA 2.0 and
+			AngularJS, Bootstrap 3, JAX-RS 1.1, CDI 1.0, EJB 3.1, JPA 2.0 and
 			Bean Validation 1.0. It includes a persistence configuration with
 			basic transaction support to help you get started with the development
 			of the application.
@@ -43,10 +43,10 @@
 		It allows you to bind events on the declared components to JavaScript logic through the MVC support in AngularJS.
 		<br />
 		<br />
-		<b>BootStrap 3</b>
+		<b>Bootstrap 3</b>
 		<br />
 		<br />
-		BootStrap 3 is a client-side web framework for developing responsive mobile-first projects for the web.
+		Bootstrap 3 is a client-side web framework for developing responsive mobile-first projects for the web.
 		It provides CSS classes to provide global styles and a grid system, and reusable components based on CSS and JavaScript that can be used for faster and easier web development.
 		<br />
 		<br />
