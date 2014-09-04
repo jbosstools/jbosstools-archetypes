@@ -109,9 +109,6 @@
 			<br/>
 			<br/>
 		</description>
-		<command
-	        required="false"
-	        serialization="org.jboss.tools.forge.ui.command.runForgeCommand"/>
 	</item>
 	<item skip="false" title="The ${artifactId} example in depth">
 		<description>
