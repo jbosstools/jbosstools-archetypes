@@ -35,7 +35,6 @@
 			<artifactId>validation-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-    </dependency>
 	</dependencies>
 	<build>
 		<plugins>
