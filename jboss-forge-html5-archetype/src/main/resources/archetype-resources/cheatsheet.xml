@@ -192,6 +192,9 @@
 			Select the <b>Member</b> entity in the list of entities (it should be the only entity in the list); use default values
 			for the remaining inputs. Click <b>Finish</b> to execute the wizard, setup JAX-RS for the project, and create the JAX-RS resource for the Member entity. 
 		</description>
+        <command
+            required="false"
+            serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=REST: Generate Endpoints From Entities)"/>
 	</item>
 	<item skip="true" title="MemberEndpoint.java">
 		<description>
@@ -244,6 +247,9 @@
 			Select the <b>Member</b> entity in the list of entities (it should be the only entity in the list.) Since we have already generated REST resources, 
 			leave the checkbox for generating REST resources unchecked. Click <b>Finish</b> to execute the wizard and create the AngularJS scaffold. 
 		</description>
+        <command
+            required="false"
+            serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=Scaffold: Generate,org.jboss.tools.forge.ui.runForgeCommand.commandValues=provider%=AngularJS)"/>
 	</item>
 	<item skip="true" title="Examine the generated scaffold (AngularJS)">
 		<description>
