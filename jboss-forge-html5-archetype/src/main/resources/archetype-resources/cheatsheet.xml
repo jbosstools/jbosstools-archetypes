@@ -1,3 +1,7 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+#set($packagePath=$package.replace(".","/"))
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     JBoss, Home of Professional Open Source
@@ -82,7 +86,7 @@
 		feedback to users.
 		</description>
 	</intro>
-	<item title="Getting started with JBoss Forge">
+	<item title="Getting started with JBoss Forge" skip="false">
 		<description>
 			JBoss Forge is a rapid application development tool that allows you to run commands that 
             generate classes and code, and perform other development-related tasks.
@@ -109,6 +113,10 @@
 			<br/>
 			<br/>
 		</description>
+		<command
+            required="true"
+            returns="currentProject"
+            serialization="org.jboss.tools.project.examples.cheatsheet.getProjectForCheatsheet"/>
 	</item>
 	<item skip="false" title="The ${artifactId} example in depth">
 		<description>
@@ -135,37 +143,37 @@
 			label="As required by the Java Persistence API (JPA) specification, Member.java is defined as an entity by adding the @Entity annotation to its class definition."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=32)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=32)" />
 		</subitem>
 		<subitem
 			label="The Member entity has a field, called 'name', that is configured to map to a column named 'full_name' in the 'Member' database table."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=44, toLine=45)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=44, toLine=45)" />
 		</subitem>
 		<subitem
 			label="The Member entity also has a field, called 'phoneNumber', that is configured to map to a column named 'phone_number' in the 'Member' database table."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=50, toLine=51)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=50, toLine=51)" />
 		</subitem>
 		<subitem
 			label="The Bean Validation specification allows constraints to be defined once (on fields and methods of the @Entity class) and applied everywhere, including the user interface and persistence layers (such as JavaServer Faces (JSF) or JPA). Here we constrain the person's 'name' and 'phoneNumber' to a certain size and regular expression. "
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=41,toLine=43)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=41,toLine=43)" />
 		</subitem>
 		<subitem
 			label="The @Digits, @NotNull and @Size annotations are further examples of constraints that may be used."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=47,toLine=49)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=47,toLine=49)" />
 		</subitem>
 		<subitem
 			label="Accessor and mutators allow other classes to fetch or set the column values."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=51,toLine=74)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=51,toLine=74)" />
 		</subitem>
 
 	</item>
@@ -204,25 +212,25 @@
 			label="Firstly, the endpoint is a @Stateless Session Bean (SLSB), which starts a new transaction context (if absent) for any method invoked from the bean."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=20)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=20)" />
 		</subitem>
 		<subitem
 			label="The endpoint also injects the JPA PersistenceContext to access the database through the already defined JPA entity."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=24)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=24)" />
 		</subitem>
 		<subitem
 			label="The endpoint contains methods to CREATE, READ, UPDATE and DELETE the contents of the 'Member' JPA entity. As previously indicated, it uses the injected JPA persistence context to perform these operations."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
 		</subitem>
 		<subitem
 			label="The methods in the endpoint are mapped to the equivalent HTTP verbs - POST, GET, PUT and DELETE. Any HTTP client can invoke these methods to manipulate instances of the 'Member' entity, and thus, the contents of the database."
 			skip="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
 		</subitem>
 	</item>
 	<item title="Generating a HTML5 based scaffold">
