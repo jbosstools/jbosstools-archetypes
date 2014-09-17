@@ -158,7 +158,7 @@
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=50, toLine=51)" />
 		</subitem>
 		<subitem
-			label="The Bean Validation specification allows constraints to be defined once (on fields and methods of the @Entity class) and applied everywhere, including the user interface and persistence layers (such as JavaServer Faces (JSF) or JPA). Here we constrain the person's 'name' and 'phoneNumber' to a certain size and regular expression. "
+			label="The Bean Validation specification allows constraints to be defined once (on fields and methods of the @Entity class) and applied everywhere, including any web service and persistence layers (such as JAX-RS or JPA). Here we constrain the person's 'name' and 'phoneNumber' to a certain size and regular expression. "
 			skip="true">
 			<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=41,toLine=43)" />
