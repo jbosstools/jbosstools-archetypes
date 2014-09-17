@@ -215,7 +215,7 @@
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=20)" />
 		</subitem>
 		<subitem
-			label="The endpoint also injects the JPA PersistenceContext to access the database through the already defined JPA entity."
+			label="The endpoint also injects the JPA PersistenceContext to access the database through the already defined JPA entity. The unitName property is mapped to a datasource in the project's persistence.xml"
 			skip="true">
 			<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=24)" />
