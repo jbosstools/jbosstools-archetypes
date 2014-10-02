@@ -202,7 +202,7 @@
 		</description>
         <command
             required="false"
-            serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=REST: Generate Endpoints From Entities)"/>
+            serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=rest-generate-endpoints-from-entities)"/>
 	</item>
 	<item skip="true" title="MemberEndpoint.java">
 		<description>
@@ -257,7 +257,7 @@
 		</description>
         <command
             required="false"
-            serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=Scaffold: Generate,org.jboss.tools.forge.ui.runForgeCommand.commandValues=provider%=AngularJS)"/>
+            serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=scaffold-generate,org.jboss.tools.forge.ui.runForgeCommand.commandValues=provider%=AngularJS)"/>
 	</item>
 	<item skip="true" title="Examine the generated scaffold (AngularJS)">
 		<description>
