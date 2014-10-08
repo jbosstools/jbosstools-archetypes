@@ -173,7 +173,7 @@
 			label="Accessor and mutators allow other classes to fetch or set the column values."
 			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=54,toLine=82)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=51,toLine=73)" />
 		</subitem>
 
 	</item>
