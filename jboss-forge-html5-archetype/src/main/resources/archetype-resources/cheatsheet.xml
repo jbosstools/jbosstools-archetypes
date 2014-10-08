@@ -19,7 +19,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<cheatsheet title="JBoss Forge: Scaffold a web application from scratch">
+<cheatsheet title="JBoss Forge: Scaffold ${artifactId}, a web application from scratch">
 	<intro>
 		<description>
 			This example shows you how to create a new web
@@ -86,7 +86,7 @@
 		feedback to users.
 		</description>
 	</intro>
-	<item title="Getting started with JBoss Forge" skip="false">
+	<item title="Getting started with JBoss Forge" skip="false" dialog="true">
 		<description>
 			JBoss Forge is a rapid application development tool that allows you to run commands that 
             generate classes and code, and perform other development-related tasks.
@@ -118,7 +118,7 @@
             returns="currentProject"
             serialization="org.jboss.tools.project.examples.cheatsheet.getProjectForCheatsheet"/>
 	</item>
-	<item skip="false" title="The ${artifactId} example in depth">
+	<item skip="false" title="The ${artifactId} example in depth" dialog="true">
 		<description>
 			The ${artifactId} application contains a simple pre-created JPA
 			entity.
@@ -135,7 +135,7 @@
 		<command required="false"
 				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/resources/META-INF/persistence.xml,fromLine=1,toLine=16)" />
 	</item>
-	<item skip="true" title="Member.java">
+	<item skip="true" title="Member.java" dialog="true">
 		<description>
 			Next, let's take a look at the pre-created Member entity (JPA):
 		</description>
@@ -177,7 +177,7 @@
 		</subitem>
 
 	</item>
-	<item title="Generating REST resources">
+	<item title="Generating REST resources" dialog="true">
 		<description>
 			We will now proceed to generate a REST resource for this JPA entity. This will expose CREATE, READ, UPDATE, and DELETE operations
 			via a RESTful web service that clients (such as a JavaScript web application or remote client) can use to manipulate the contents of the database.
@@ -204,36 +204,36 @@
             required="false"
             serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=rest-generate-endpoints-from-entities)"/>
 	</item>
-	<item skip="true" title="MemberEndpoint.java">
+	<item skip="true" title="MemberEndpoint.java" dialog="true">
 		<description>
 			Let's now take a look at the MemberEndpoint JAX-RS resource class, created by JBoss Forge.
 		</description>
 		<subitem
 			label="Firstly, the endpoint is a @Stateless Session Bean (SLSB), which starts a new transaction context (if absent) for any method invoked from the bean."
-			skip="true">
+			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=20)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=28)" />
 		</subitem>
 		<subitem
 			label="The endpoint also injects the JPA PersistenceContext to access the database through the already defined JPA entity. The unitName property is mapped to a datasource in the project's persistence.xml"
-			skip="true">
+			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=24)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=32)" />
 		</subitem>
 		<subitem
 			label="The endpoint contains methods to CREATE, READ, UPDATE and DELETE the contents of the 'Member' JPA entity. As previously indicated, it uses the injected JPA persistence context to perform these operations."
-			skip="true">
+			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=35,toLine=111)" />
 		</subitem>
 		<subitem
 			label="The methods in the endpoint are mapped to the equivalent HTTP verbs - POST, GET, PUT and DELETE. Any HTTP client can invoke these methods to manipulate instances of the 'Member' entity, and thus, the contents of the database."
-			skip="true">
+			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=27,toLine=103)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberEndpoint.java,fromLine=35,toLine=111)" />
 		</subitem>
 	</item>
-	<item title="Generating a HTML5 based scaffold">
+	<item title="Generating a HTML5 based scaffold" dialog="true">
 		<description>
 			Now, let's continue by generating the AngularJS based scaffold. Scaffolding can be used to interact with the database through 
 			a HTML5 front-end. This front-end will use the newly created REST resource, `MemberEndpoint.java`, to exchange data with the server. 
@@ -259,7 +259,7 @@
             required="false"
             serialization="org.jboss.tools.forge.ui.runForgeCommand(org.jboss.tools.forge.ui.runForgeCommand.commandName=scaffold-generate,org.jboss.tools.forge.ui.runForgeCommand.commandValues=provider%=AngularJS)"/>
 	</item>
-	<item skip="true" title="Examine the generated scaffold (AngularJS)">
+	<item skip="true" title="Examine the generated scaffold (AngularJS)" dialog="true">
 		<description>
 			Let&apos;s now take a look at the AngularJS scaffold created by JBoss Forge.
 			<br /><br />
@@ -279,7 +279,7 @@
 			Several other supporting web pages and JavaScript files are also included.    
 		</description>
 	</item>
-	<item skip="true" title="Run and deploy the application">
+	<item skip="true" title="Run and deploy the application" dialog="true">
 		<description>
 			Before you proceed to deploy the application, ensure that you have setup and configured a JBoss
 			EAP 6 server.
@@ -291,7 +291,7 @@
 			class="org.jboss.tools.project.examples.cheatsheet.actions.RunOnServer"
 			param1="${currentProject}" />
 	</item>
-	<item skip="true" title="Open the application in BrowserSim">
+	<item skip="true" title="Open the application in BrowserSim" dialog="true">
 		<description>
 			Locate the &quot;Run BrowserSim&quot; button on the toolbar and click it, or click &quot;Click to Perform&quot; (below).
 			This launches BrowserSim, where you can simulate the execution of the application on a mobile browser.
@@ -301,7 +301,7 @@
 		<command required="false"
 			serialization="org.jboss.tools.vpe.browsersim.eclipse.commands.runBrowserSim" />
 	</item>
-	<item title="Continue exploring JBoss Forge">
+	<item title="Continue exploring JBoss Forge" dialog="true">
 		<description>
 			At this point, you should now have successfully created a Java EE 6 web application using several technologies/specifications. Browse the Forge menu
 			to find more useful commands, or to learn more about JBoss Forge, find more tutorials, and explore a variety of community-supported addons for various technologies, 
