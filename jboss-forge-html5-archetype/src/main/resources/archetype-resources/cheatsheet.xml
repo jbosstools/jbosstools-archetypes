@@ -143,31 +143,31 @@
 			label="As required by the Java Persistence API (JPA) specification, Member.java is defined as an entity by adding the @Entity annotation to its class definition."
 			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=31)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=30)" />
 		</subitem>
 		<subitem
 			label="The Member entity has a field, called 'name', that is configured to map to a column named 'full_name' in the 'Member' database table."
 			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=45, toLine=46)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=42,toLine=43)" />
 		</subitem>
 		<subitem
 			label="The Member entity also has a field, called 'phoneNumber', that is configured to map to a column named 'phone_number' in the 'Member' database table."
 			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=51, toLine=52)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=48,toLine=49)" />
 		</subitem>
 		<subitem
 			label="The Bean Validation specification allows constraints to be defined once (on fields and methods of the @Entity class) and applied everywhere, including any web service and persistence layers (such as JAX-RS or JPA). Here we constrain the person's 'name' and 'phoneNumber' to a certain size and regular expression. "
 			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=43,toLine=44)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=40,toLine=41)" />
 		</subitem>
 		<subitem
 			label="The @Digits, @NotNull and @Size annotations are further examples of constraints that may be used."
 			skip="true" dialog="true">
 			<command required="false"
-				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=48,toLine=50)" />
+				serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=45,toLine=47)" />
 		</subitem>
 		<subitem
 			label="Accessor and mutators allow other classes to fetch or set the column values."
